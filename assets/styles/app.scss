@@ -1,8 +1,14 @@
-@import "~bootstrap/scss/bootstrap";
+@import "~bootstrap";
 
-main {
-  background-color: #eff2f6;
+body {
+  background-color: #C3D9B4;
 }
-.bg-white {
-  background-color: white;
+
+header {
+  background-color: #FFFFFF;
+}
+
+header.fixed-top + main {
+  padding-top: calc(1.5rem + 56px);
+  margin-bottom: 1.5rem;
 }
