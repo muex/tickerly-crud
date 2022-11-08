@@ -39,24 +39,18 @@ class GameRepository extends ServiceEntityRepository
         }
     }
 
-    /**
-     * @return Game[] Returns an array of Game objects
-     */
     public function findNextGames(): array
     {
         return $this->createQueryBuilder('g')
             ->andWhere('g.datetime > :val')
             ->setParameter('val', new \DateTime('now'))
-            ->orderBy('g.id', 'ASC')
+            ->orderBy('g.datetime', 'DESC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
 
-    /**
-     * @return Game[] Returns an array of Game objects
-     */
     public function findLastGames(): array
     {
         return $this->createQueryBuilder('g')

@@ -17,7 +17,7 @@ class Game
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $place = null;
+    private ?string $location = null;
 
     #[ORM\Column(length: 255)]
     private ?string $home = null;
@@ -29,17 +29,18 @@ class Game
     private ?\DateTimeInterface $datetime = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $homepoints = null;
+    private ?int $homepoints = 0;
 
     #[ORM\Column(nullable: true)]
-    private ?int $awaypoints = null;
+    private ?int $awaypoints = 0;
 
     #[ORM\OneToMany(mappedBy: 'game', targetEntity: GameEvent::class)]
+    #[ORM\OrderBy(["timecode" => 'DESC'])]
     private Collection $gameEvents;
 
     #[ORM\ManyToOne(inversedBy: 'games')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    private ?User $owner = null;
 
     public function __construct()
     {
@@ -51,14 +52,14 @@ class Game
         return $this->id;
     }
 
-    public function getPlace(): ?string
+    public function getLocation(): ?string
     {
-        return $this->place;
+        return $this->location;
     }
 
-    public function setPlace(string $place): self
+    public function setLocation(string $location): self
     {
-        $this->place = $place;
+        $this->location = $location;
 
         return $this;
     }
@@ -153,14 +154,14 @@ class Game
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getOwner(): ?User
     {
-        return $this->user;
+        return $this->owner;
     }
 
-    public function setUser(?User $user): self
+    public function setOwner(?User $owner): self
     {
-        $this->user = $user;
+        $this->owner = $owner;
 
         return $this;
     }

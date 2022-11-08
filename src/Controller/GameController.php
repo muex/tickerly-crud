@@ -31,7 +31,7 @@ class GameController extends AbstractController
     public function new(Request $request, GameRepository $gameRepository): Response
     {
         $game = new Game();
-        $game->setUser($this->getUser());
+        $game->setOwner($this->getUser());
 
         $form = $this->createForm(GameType::class, $game);
         $form->handleRequest($request);

@@ -11,13 +11,12 @@
 
                         <p class="pb-0">{{ game.home }} : {{ game.away }}</p>
                         <p>{{ game.homepoints }} : {{ game.awaypoints }}</p>
-                        <p class="small">{{ game.place }}</p>
+                        <p class="small">{{ game.location }}</p>
                         <p>{{ game.datetime ? game.datetime|date('d.m.Y H:i') : '' }}</p>
                     </div>
 
-                <div class="card-footer border-0 pt-0">
-                    <a href="{{ path('app_game_show', {'id': game.id}) }}">show</a>
-                    <a href="{{ path('app_game_edit', {'id': game.id}) }}">edit</a>
+                <div class="card-footer border-0 pt-0 text-center">
+                    <a class="btn btn-secondary" href="{{ path('app_game_show', {'id': game.id}) }}">Zum Spiel</a>
                 </div>
             </div>
 
@@ -28,18 +27,18 @@
         {% endfor %}
 
         {% for game in lastgames %}
+            <h2 class="text-center">Die letzten Spiele</h2>
             <div class="card mb-4">
                 <div class="card-header border-0 pb-0 text-center">
 
                     <p class="pb-0">{{ game.home }} : {{ game.away }}</p>
                     <p>{{ game.homepoints }} : {{ game.awaypoints }}</p>
-                    <p class="small">{{ game.place }}</p>
+                    <p class="small">{{ game.location }}</p>
                     <p>{{ game.datetime ? game.datetime|date('d.m.Y H:i') : '' }}</p>
                 </div>
 
-                <div class="card-footer border-0 pt-0">
-                    <a href="{{ path('app_game_show', {'id': game.id}) }}">show</a>
-                    <a href="{{ path('app_game_edit', {'id': game.id}) }}">edit</a>
+                <div class="card-footer border-0 pt-0 text-center">
+                    <a class="btn btn-secondary" href="{{ path('app_game_show', {'id': game.id}) }}">Zum Spiel</a>
                 </div>
             </div>
 
@@ -48,6 +47,6 @@
                 <p>no records found</p>
             </div>
         {% endfor %}
-
-    <a href="{{ path('app_game_new') }}">Create new</a>
+    {% if is_granted('ROLE_USER') %}
+    <a class="btn btn-secondary" href="{{ path('app_game_new') }}">Neues Spiel erstellen</a> {% endif %}
 {% endblock %}
