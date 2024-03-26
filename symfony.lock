@@ -35,15 +35,6 @@
             "migrations/.gitignore"
         ]
     },
-    "phpunit/phpunit": {
-        "version": "9.5",
-        "recipe": {
-            "version": "9.3"
-        }
-    },
-    "sensio/framework-extra-bundle": {
-        "version": "v6.2.6"
-    },
     "symfony/console": {
         "version": "6.1",
         "recipe": {
@@ -94,15 +85,6 @@
         "version": "6.1",
         "recipe": {
             "version": "4.3"
-        }
-    },
-    "symfony/maker-bundle": {
-        "version": "1.45",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "1.0",
-            "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
     "symfony/messenger": {
@@ -168,6 +150,18 @@
         "files": [
             "config/packages/twig.yaml",
             "templates/base.html.twig"
+        ]
+    },
+    "symfony/uid": {
+        "version": "6.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "6.2",
+            "ref": "d294ad4add3e15d7eb1bae0221588ca89b38e558"
+        },
+        "files": [
+            "config/packages/uid.yaml"
         ]
     },
     "symfony/validator": {

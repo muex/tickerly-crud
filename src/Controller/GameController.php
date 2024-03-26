@@ -9,11 +9,12 @@ use App\Form\GameEventType;
 use App\Repository\GameRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+//use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 #[Route('/')]
 class GameController extends AbstractController
@@ -133,8 +134,12 @@ class GameController extends AbstractController
     }
 
     #[Route('/{game_id}/newevent', name: 'app_event_new', methods: ['POST'])]
-    #[ParamConverter('game', options: ['mapping' => ['game_id' => 'id']])]
-    public function gameEventNew(Request $request, Game $game, EventDispatcherInterface $eventDispatcher, EntityManagerInterface $entityManager): Response
+    public function gameEventNew(
+        Request $request,
+        EventDispatcherInterface $eventDispatcher,
+        EntityManagerInterface $entityManager,
+        #[MapEntity(mapping: ['game_id' => 'id'])] Game $game
+    ): Response
     {
         $gameEvent = new GameEvent();
         $game->addGameEvent($gameEvent);
