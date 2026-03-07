@@ -2,7 +2,7 @@
   "license": "MIT",
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
-    "@symfony/webpack-encore": "^3.0.0",
+    "@symfony/webpack-encore": "^5.3.1",
     "bootstrap": "^5.2.0",
     "sass": "^1.54.4",
     "sass-loader": "^13.0.0",
