@@ -2,11 +2,11 @@
   "license": "MIT",
   "devDependencies": {
     "@popperjs/core": "^2.11.6",
-    "@symfony/webpack-encore": "^5.3.1",
+    "@symfony/webpack-encore": "^6.0.0",
     "bootstrap": "^5.2.0",
     "sass": "^1.54.4",
     "sass-loader": "^13.0.0",
-    "webpack-notifier": "^1.15.0"
+    "webpack-notifier": "^1.11.1"
   },
   "scripts": {
     "dev-server": "encore dev-server",
